@@ -1,4 +1,6 @@
-let data = {}; // Stocker les données JSON
+var data = {}; // Stocker les données JSON
+var cart = []; // Stocker les éléments du panier
+var totalPrice = 0; // Prix total initialisé à 0
 
 // Charger les données JSON
 fetch('mcdo.json')
@@ -15,6 +17,11 @@ fetch('mcdo.json')
 var modal = document.getElementById("categoryModal");
 var closeModal = document.querySelector(".close");
 var categoryList = document.getElementById("categoryList");
+var cartPanel = document.getElementById("cartPanel");
+var cartItems = document.getElementById("cartItem");
+var validateOrder = document.getElementById("validate");
+var cancelOrder = document.getElementById("cancel");
+var totalElement = document.getElementById("totalPrice"); // Élément pour afficher le prix total
 
 // Fonction pour afficher une catégorie
 function showCategory(category) {
@@ -35,10 +42,10 @@ function showCategory(category) {
       img.alt = item.name;
 
       var details = document.createElement("div");
-      details.innerHTML = `<h3>${item.name}</h3>
-        <p>${item.description || ""}</p>
-        <p><strong>Prix :</strong> ${item.price} €</p>
-        <p><strong>Calories :</strong> ${item.calories || "N/A"} kcal</p>`;
+      details.innerHTML = "<h3>" + item.name + "</h3>" +
+        "<p>" + (item.description || "") + "</p>" +
+        "<p><strong>Prix :</strong> " + item.price + " €</p>" +
+        "<button onclick='addToCart(\"" + category + "\", " + i + ")'>Ajouter au panier</button>";
 
       itemDiv.appendChild(img);
       itemDiv.appendChild(details);
@@ -75,4 +82,50 @@ document.getElementById("showMenus").addEventListener("click", function() {
 
 document.getElementById("showHappyMeals").addEventListener("click", function() {
   showCategory("happyMeal");
+});
+
+// Fonction pour ajouter un élément au panier
+function addToCart(category, index) {
+  var item = data[category][index];
+  cart.push(item);
+  totalPrice += item.price; // Ajouter le prix de l'article au total
+  displayCart();
+  updateTotalPrice(); // Mettre à jour le prix total
+}
+
+// Fonction pour afficher le panier
+function displayCart() {
+  cartItems.innerHTML = "";
+
+  for (var i = 0; i < cart.length; i++) {
+    var item = cart[i];
+    var div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = "<p><strong>" + item.name + "</strong></p>" +
+      "<p>Prix : " + item.price + " €</p>";
+    cartItems.appendChild(div);
+  }
+}
+
+// Fonction pour mettre à jour le prix total
+function updateTotalPrice() {
+  totalElement.textContent = "Prix total : " + totalPrice.toFixed(2) + " €";
+}
+
+// Gérer le bouton "Valider commande"
+validateOrder.addEventListener("click", function() {
+  alert("Commande validée ! Prix total : " + totalPrice.toFixed(2) + " €");
+  cart = [];
+  totalPrice = 0; // Réinitialiser le prix total
+  cartItems.innerHTML = "";
+  updateTotalPrice(); // Mettre à jour le prix total à 0
+});
+
+// Gérer le bouton "Annuler commande"
+cancelOrder.addEventListener("click", function() {
+  alert("Commande annulée.");
+  cart = [];
+  totalPrice = 0; // Réinitialiser le prix total
+  cartItems.innerHTML = "";
+  updateTotalPrice(); // Mettre à jour le prix total à 0
 });

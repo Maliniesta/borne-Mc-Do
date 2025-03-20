@@ -3,23 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="commande.css">
   <title>Catégories Modales</title>
-  <link rel="stylesheet" href="styles.css">
+  
 </head>
+<header>
+    <div class="nav"><img src="borne-Mc-Do/image-mc-do/Logo_France_Mcdo.png" alt="logo mcdo" class="logo">
+        <button class="connexion">Connexion</button>
+    </div>
+</header>
 <body>
-  <button id="showBurgers">Voir les Burgers</button>
-  <button id="showSides">Voir les Accompagnements</button>
-  <button id="showDrinks">Voir les Boissons</button>
-  <button id="showDesserts">Voir les Desserts</button>
-  <button id="showMenus">Voir les Menus</button>
-  <button id="showHappyMeals">Voir les Happy Meals</button>
-
+<div class="boutton-burger">
+  <button id="showBurgers" class="btnBurger">Voir les Burgers</button>
+  <button id="showSides" class="btnBurger">Voir les Accompagnements</button>
+  <button id="showDrinks" class="btnBurger">Voir les Boissons</button>
+  <button id="showDesserts" class="btnBurger">Voir les Desserts</button>
+  <button id="showMenus" class="btnBurger">Voir les Menus</button>
+  <button id="showHappyMeals" class="btnBurger">Voir les Happy Meals</button>
+</div>
   <div id="categoryModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <div id="categoryList"></div>
     </div>
-  </div>
+    <section>
+        <div id="cartPanel" class="cart-panel">
+            <h2>Votre panier</h2>
+            <p id="totalPrice">Prix total : 0 €</p> <!-- Total déplacé ici -->
+            <div id="cartItem"></div>
+            <div id="cartButton">
+              <button id="validate">Valider la commande</button>
+              <button id="cancel">Annuler la commande</button>
+            </div>
+          </div>
+          
+            
+</section>
+  
 
   <script src="script.js"></script>
 </body>
