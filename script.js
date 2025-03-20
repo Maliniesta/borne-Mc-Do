@@ -1,6 +1,6 @@
-var data = {}; // Stocker les données JSON
-var cart = []; // Stocker les éléments du panier
-var totalPrice = 0; // Prix total initialisé à 0
+let data = {}; // Stocker les données JSON
+let cart = []; // Stocker les éléments du panier
+let totalPrice = 0; // Prix total initialisé à 0
 
 // Charger les données JSON
 fetch('mcdo.json')
@@ -14,14 +14,14 @@ fetch('mcdo.json')
     console.error("Erreur : impossible de charger le fichier JSON.");
   });
 
-var modal = document.getElementById("categoryModal");
-var closeModal = document.querySelector(".close");
-var categoryList = document.getElementById("categoryList");
-var cartPanel = document.getElementById("cartPanel");
-var cartItems = document.getElementById("cartItem");
-var validateOrder = document.getElementById("validate");
-var cancelOrder = document.getElementById("cancel");
-var totalElement = document.getElementById("totalPrice"); // Élément pour afficher le prix total
+let modal = document.getElementById("categoryModal");
+let closeModal = document.querySelector(".close");
+let categoryList = document.getElementById("categoryList");
+let cartPanel = document.getElementById("cartPanel");
+let cartItems = document.getElementById("cartItem");
+let validateOrder = document.getElementById("validate");
+let cancelOrder = document.getElementById("cancel");
+let totalElement = document.getElementById("totalPrice"); // Élément pour afficher le prix total
 
 // Fonction pour afficher une catégorie
 function showCategory(category) {
@@ -32,16 +32,16 @@ function showCategory(category) {
 
   // Créer des éléments pour chaque item de la catégorie
   if (data[category]) {
-    for (var i = 0; i < data[category].length; i++) {
-      var item = data[category][i];
-      var itemDiv = document.createElement("div");
+    for (let i = 0; i < data[category].length; i++) {
+      let item = data[category][i];
+      let itemDiv = document.createElement("div");
       itemDiv.className = "item";
 
-      var img = document.createElement("img");
+      let img = document.createElement("img");
       img.src = item.image;
       img.alt = item.name;
 
-      var details = document.createElement("div");
+      let details = document.createElement("div");
       details.innerHTML = "<h3>" + item.name + "</h3>" +
         "<p>" + (item.description || "") + "</p>" +
         "<p><strong>Prix :</strong> " + item.price + " €</p>" +
@@ -86,7 +86,7 @@ document.getElementById("showHappyMeals").addEventListener("click", function() {
 
 // Fonction pour ajouter un élément au panier
 function addToCart(category, index) {
-  var item = data[category][index];
+  let item = data[category][index];
   cart.push(item);
   totalPrice += item.price; // Ajouter le prix de l'article au total
   displayCart();
@@ -97,9 +97,9 @@ function addToCart(category, index) {
 function displayCart() {
   cartItems.innerHTML = "";
 
-  for (var i = 0; i < cart.length; i++) {
-    var item = cart[i];
-    var div = document.createElement("div");
+  for (let i = 0; i < cart.length; i++) {
+    let item = cart[i];
+    let div = document.createElement("div");
     div.className = "cart-item";
     div.innerHTML = "<p><strong>" + item.name + "</strong></p>" +
       "<p>Prix : " + item.price + " €</p>";
