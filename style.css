@@ -47,3 +47,16 @@ button.btn {
     padding: 1rem;
     border-radius: 0.5rem;
 }
+
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+}
+
+.choix{
+    width: 80%;
+}
+
+.payement{
+    width: 20%;
+}

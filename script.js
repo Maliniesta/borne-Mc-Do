@@ -12,9 +12,9 @@ fetch('mcdo.json')
     console.error("Erreur : impossible de charger le fichier JSON.");
   });
 
-var modal = document.getElementById("categoryModal");
-var closeModal = document.querySelector(".close");
-var categoryList = document.getElementById("categoryList");
+let modal = document.getElementById("categoryModal");
+let closeModal = document.querySelector(".close");
+let categoryList = document.getElementById("categoryList");
 
 // Fonction pour afficher une catégorie
 function showCategory(category) {
@@ -23,28 +23,41 @@ function showCategory(category) {
   // Vider la liste actuelle
   categoryList.innerHTML = "";
 
-  // Créer des éléments pour chaque item de la catégorie
-  if (data[category]) {
-    for (var i = 0; i < data[category].length; i++) {
-      var item = data[category][i];
-      var itemDiv = document.createElement("div");
+ // Créer des éléments pour chaque item de la catégorie
+if (data[category]) {
+  for (let i = 0; i < data[category].length; i++) {
+      let item = data[category][i];
+      let itemDiv = document.createElement("div");
       itemDiv.className = "item";
 
-      var img = document.createElement("img");
+      // Créer l'image
+      let img = document.createElement("img");
       img.src = item.image;
       img.alt = item.name;
 
-      var details = document.createElement("div");
+      // Créer la section des détails
+      let details = document.createElement("div");
       details.innerHTML = `<h3>${item.name}</h3>
-        <p>${item.description || ""}</p>
-        <p><strong>Prix :</strong> ${item.price} €</p>
-        <p><strong>Calories :</strong> ${item.calories || "N/A"} kcal</p>`;
+          <p>${item.description || ""}</p>
+          <p><strong>Prix :</strong> ${item.price} €</p>
+          <p><strong>Calories :</strong> ${item.calories || "N/A"} kcal</p>`;
 
+      // Créer le bouton "Ajouter à ma commande"
+      let secondaryBtn = document.createElement('button');
+      secondaryBtn.textContent = 'Ajouter à ma commande';
+
+      // Ajouter l'image et les détails à la div de l'item
       itemDiv.appendChild(img);
       itemDiv.appendChild(details);
+
+      // Ajouter le bouton à la div de l'item (pas dans "details")
+      itemDiv.appendChild(secondaryBtn);
+
+      // Ajouter l'itemDiv à la liste de la catégorie
       categoryList.appendChild(itemDiv);
-    }
   }
+}
+
 }
 
 // Fermer la modale

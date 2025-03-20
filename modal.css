@@ -2,48 +2,93 @@ body {
     font-family: Arial, sans-serif;
   }
   
-  button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 80%;
-    max-width: 600px;
-  }
-  
-  .close {
-    float: right;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .item {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .item img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-  }
+ /* Modal */
+.modal {
+  display: none; /* Masquer le modal au début */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Fond sombre */
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Permet le défilement si nécessaire */
+}
+
+/* Contenu du Modal */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+/* Bouton de fermeture du modal */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Conteneur des items dans le modal */
+#categoryList {
+  display: flex;
+  flex-wrap: wrap; /* Permet aux cartes de s'enrouler sur plusieurs lignes */
+  justify-content: space-around; /* Répartition égale des cartes sur la ligne */
+  gap: 20px; /* Espacement entre les cartes */
+  margin-top: 20px;
+}
+
+/* Style de chaque carte */
+.item {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère pour la carte */
+  width: 30%;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+/* Effet au survol de la carte */
+.item:hover {
+  transform: scale(1.05); /* Agrandir légèrement */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus marquée */
+}
+
+/* Image de la carte */
+.item img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover; /* Pour garder l'image proportionnelle */
+  border-radius: 8px;
+}
+
+/* Détails de la carte */
+.item .details {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Bouton d'ajout à la commande */
+.item button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: green; /* Couleur du bouton */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.item button:hover {
+  background-color: #e07b00; /* Changer de couleur au survol */
+}
+
   
