@@ -6,7 +6,7 @@
       "description": "Deux steaks hachés, cheddar fondu, oignons, cornichons et la sauce inimitable, dans un pain avec graines de sésame.",
       "price": 5.20,
       "calories": 503,
-      "image": "images/big_mac.png"
+      "image": "image-mc-do/BigMac.webp"
     },
     {
       "id": 2,

@@ -1,6 +1,49 @@
-body {
-    background-image: url(image-mc-do/wp1919500.jpg);
-    background-size: cover;
-    width: 20%;
-    height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+        background-image: url(image-mc-do/wp1919500.jpg);
+        background-size: contain;
+        width: 100%;
+        background-repeat: no-repeat;
+        height: 100vh;
+        background-position: right;
+    }
+
+#primaryBtn {
+    position: absolute;
+    top: 50%;
+    left: 36%;
+    padding: 2rem 3rem;
+    border-radius: 1rem;
+    background-color: #fdec4b;
+    font-size: larger;
+}
+
+.logo {
+    width: 100px;
+    margin-left: 8%;
+    margin-top: 1%;
+}
+
+#primaryBtn:hover {
+    background-color: #ffffff;
+}
+
+.boutton-co {
+    margin-left: 10rem;
+    margin-top: 18rem;
+}
+
+.boutton-in {
+    margin-left: 10rem;
+    margin-top: 5rem;
+}
+
+button.btn {
+    background-color: #ffbc0d;
+    padding: 1rem;
+    border-radius: 0.5rem;
 }
