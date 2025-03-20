@@ -47,11 +47,22 @@ function showCategory(category) {
         "<p><strong>Prix :</strong> " + item.price + " €</p>" +
         "<button onclick='addToCart(\"" + category + "\", " + i + ")'>Ajouter au panier</button>";
 
+      // Créer le bouton "Ajouter à ma commande"
+      let secondaryBtn = document.createElement('button');
+      secondaryBtn.textContent = 'Ajouter à ma commande';
+
+      // Ajouter l'image et les détails à la div de l'item
       itemDiv.appendChild(img);
       itemDiv.appendChild(details);
+
+      // Ajouter le bouton à la div de l'item (pas dans "details")
+      itemDiv.appendChild(secondaryBtn);
+
+      // Ajouter l'itemDiv à la liste de la catégorie
       categoryList.appendChild(itemDiv);
-    }
   }
+}
+
 }
 
 // Fermer la modale
