@@ -266,7 +266,6 @@ function showOrderSummary() {
   });
 }
 
-  
   cart = []; // Réinitialiser le panier après validation
   totalPrice = 0; // Réinitialiser le total
   cartItems.innerHTML = "";
