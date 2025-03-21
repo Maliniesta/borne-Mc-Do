@@ -1,8 +1,12 @@
+body{
+  background-color:  #FFC72C;
+}
+
 img.logo {
     width: 7%;
 }
 .nav {
-    background-color: #c7c7c7;
+    background-color: #264f36 ;
     border-radius: 0.5rem;
     display: flex;
 }
@@ -99,5 +103,16 @@ button#validate {
 
 .delet:hover {
   background-color: red;
+}
+
+
+#carousel{
+  height: 70vh;
+  width: 40vw;
+  margin-left: 7%;
+}
+
+.pub2{
+  width: 20vw;
 }
 

@@ -171,7 +171,6 @@ cancelOrder.addEventListener("click", function() {
 
 const slide = [
   "image-mc-do/carousel/pub1.jpg",
-  "image-mc-do/carousel/pub2.jpg",
   "image-mc-do/carousel/pub3.jpg",
   "image-mc-do/carousel/pub4.jpg"
 ];
