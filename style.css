@@ -14,7 +14,7 @@ body {
         background-repeat: no-repeat;
         height: 100vh;
         background-position: right;
-    }
+}
 
 #primaryBtn {
     position: absolute;
@@ -26,15 +26,6 @@ body {
     font-size: larger;
     color: #fff;
 }
-a {
-    text-decoration: none;
-    color: #fff;
-}
-.logo {
-    width: 100px;
-    margin-left: 8%;
-    margin-top: 1%;
-}
 
 #primaryBtn:hover {
     background-color: #6d6d6d;
@@ -44,7 +35,6 @@ a {
     margin-left: 4rem;
     margin-top: 17rem;
 }
-
 
 .boutton-in {
     margin-left: 10rem;
@@ -60,6 +50,16 @@ button.btn {
     margin-left: 1%;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.logo {
+    width: 100px;
+    margin-left: 8%;
+    margin-top: 1%;
+}
 
 img.M {
     width: 20.7%;

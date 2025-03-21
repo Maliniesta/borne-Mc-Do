@@ -7,6 +7,7 @@ img.logo {
 }
 .nav {
     background-color: #ffffff ;
+    border-radius: 0.5rem;
     display: flex;
    
 }
