@@ -92,11 +92,15 @@ document.getElementById("showHappyMeals").addEventListener("click", function() {
 
 // Fonction pour ajouter un élément au panier
 function addToCart(category, index) {
-  let item = data[category][index];
-  cart.push(item);
-  totalPrice += item.price; // Ajouter le prix de l'article au total
-  displayCart();
-  updateTotalPrice(); // Mettre à jour le prix total
+  if (category === "happyMeal") {
+    chooseToyOrBook(index); // Appelle la fonction pour choisir l'option
+  } else {
+    let item = data[category][index];
+    cart.push(item);
+    totalPrice += item.price; // Ajouter le prix de l'article au total
+    displayCart();
+    updateTotalPrice(); // Mettre à jour le prix total
+  }
 }
 
 // Fonction pour retirer un élément du panier
@@ -123,17 +127,11 @@ function createCartItemElement(item, index) {
 
   let removeButton = document.createElement("button");
   removeButton.classList.add("delet");
-
- 
-  
   removeButton.textContent = "Retirer";
   removeButton.addEventListener("click", function() {
-  removeFromCart(index);
-  removeButton.classList.add("delet"); // Utiliser removeButton au lieu de bouton
-  console.log("Classes actuelles du bouton :", removeButton.classList);
+    removeFromCart(index);
   });
   div.appendChild(removeButton);
-
 
   return div;
 }
@@ -141,7 +139,6 @@ function createCartItemElement(item, index) {
 // Fonction pour afficher le panier
 function displayCart() {
   cartItems.innerHTML = ""; // Réinitialiser l'affichage du panier
-
   cart.forEach(function(item, index) {
     let cartItemElement = createCartItemElement(item, index);
     cartItems.appendChild(cartItemElement);
@@ -163,6 +160,9 @@ validateOrder.addEventListener("click", function() {
   updateTotalPrice(); // Mettre à jour le prix total à 0
 });
 
+
+
+
 // Gérer le bouton "Annuler commande"
 cancelOrder.addEventListener("click", function() {
   alert("Commande annulée.");
@@ -172,7 +172,7 @@ cancelOrder.addEventListener("click", function() {
   updateTotalPrice(); // Mettre à jour le prix total à 0
 });
 
-
+// Gestion des diapositives pour le carrousel
 const slide = [
   "image-mc-do/carousel/pub1.jpg",
   "image-mc-do/carousel/pub3.jpg",
@@ -182,23 +182,21 @@ let number = 0;
 
 function ChangeSlide(sens) {
   number = number + sens;
-
-  // Corriger les limites d'index
   if (number >= slide.length) number = 0;
   if (number < 0) number = slide.length - 1;
-
-  document.getElementById("carousel").src = slide[number]; // Utilise le bon chemin d'image
+  document.getElementById("carousel").src = slide[number];
 }
 
-// Utilisation de setInterval correctement avec une fonction
-setInterval(() => ChangeSlide(1), 2000);
+setInterval(function() {
+  ChangeSlide(1);
+}, 3000);
 
-
+// Fonction pour gérer le choix Jouet ou Livre
 function chooseToyOrBook(happyMealIndex) {
-  // Créer et afficher une modale pour le choix
   const modal = document.createElement("div");
   modal.className = "modal-happy";
   modal.style.display = "flex";
+
   modal.innerHTML = `
     <div class="modal-content">
       <h3>Choisissez une option pour votre Happy Meal :</h3>
@@ -208,28 +206,69 @@ function chooseToyOrBook(happyMealIndex) {
   `;
   document.body.appendChild(modal);
 
-  // Gestion de la sélection (jouet ou livre)
-  const handleSelection = (toyChoice) => {
+  function handleSelection(toyChoice) {
     const selectedItem = { ...data.happyMeal[happyMealIndex], toy: toyChoice };
     cart.push(selectedItem);
     totalPrice += selectedItem.price;
     updateTotalPrice();
     displayCart();
-    modal.remove(); // Fermer la modale
-  };
-
-  document.getElementById("chooseToy").addEventListener("click", () => handleSelection("Jouet Pokémon"));
-  document.getElementById("chooseBook").addEventListener("click", () => handleSelection("Livre Disney"));
-}
-function addToCart(category, index) {
-  if (category === "happyMeal") {
-    chooseToyOrBook(index); // Appelle la fonction pour choisir l'option
-  } else {
-    let item = data[category][index];
-    cart.push(item);
-    totalPrice += item.price; // Ajouter le prix de l'article au total
-    displayCart();
-    updateTotalPrice(); // Mettre à jour le prix total
+    modal.remove(); // Fermer la modale après la sélection
   }
+
+  document.getElementById("chooseToy").addEventListener("click", function() {
+    handleSelection("Jouet Pokémon");
+  });
+
+  document.getElementById("chooseBook").addEventListener("click", function() {
+    handleSelection("Livre Disney");
+  });
 }
+
+
+// Fonction pour générer un numéro de table
+function generateTableNumber() {
+  const min = 50; // Limite inférieure
+  const max = 999; // Limite supérieure
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Fonction pour afficher la modale de récapitulatif
+function showOrderSummary() {
+  // Créer une modale
+  const modal = document.createElement("div");
+  modal.className = "modal-sell";
+  modal.style.display = "flex";
+
+  // Contenu de la modale
+  const tableNumber = generateTableNumber();
+  let orderItems = "";
+  cart.forEach(function (item) {
+    orderItems += `<li>${item.name} - ${item.price.toFixed(2)} €</li>`;
+  });
+
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Récapitulatif de votre commande</h2>
+      <ul>${orderItems}</ul>
+      <p><strong>Prix Total : </strong> ${totalPrice.toFixed(2)} €</p>
+      <p><strong>Numéro de Table : </strong>${tableNumber}</p>
+      <button id="closeModal">Fermer</button>
+    </div>
+  `;
+ 
+  
+  // Ajouter la modale au DOM
+  document.body.appendChild(modal);
+
+  // Gérer la fermeture de la modale
+  document.getElementById("closeModal").addEventListener("click", function () {
+    modal.remove();
+  });
+}
+
+  
+  cart = []; // Réinitialiser le panier après validation
+  totalPrice = 0; // Réinitialiser le total
+  cartItems.innerHTML = "";
+  updateTotalPrice(); // Mettre à jour l'affichage du prix total
 
