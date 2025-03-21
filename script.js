@@ -119,13 +119,18 @@ function createCartItemElement(item, index) {
   div.appendChild(itemPrice);
 
   let removeButton = document.createElement("button");
+  removeButton.classList.add("delet");
+
+ 
   
   removeButton.textContent = "Retirer";
   removeButton.addEventListener("click", function() {
-    removeFromCart(index);
-    bouton.classList.add("delet");
+  removeFromCart(index);
+  removeButton.classList.add("delet"); // Utiliser removeButton au lieu de bouton
+  console.log("Classes actuelles du bouton :", removeButton.classList);
   });
   div.appendChild(removeButton);
+
 
   return div;
 }
