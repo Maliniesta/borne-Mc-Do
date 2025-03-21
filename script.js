@@ -47,22 +47,14 @@ function showCategory(category) {
         "<p><strong>Prix :</strong> " + item.price + " €</p>" +
         "<button onclick='addToCart(\"" + category + "\", " + i + ")'>Ajouter au panier</button>";
 
-      // Créer le bouton "Ajouter à ma commande"
-      let secondaryBtn = document.createElement('button');
-      secondaryBtn.textContent = 'Ajouter à ma commande';
-
       // Ajouter l'image et les détails à la div de l'item
       itemDiv.appendChild(img);
       itemDiv.appendChild(details);
 
-      // Ajouter le bouton à la div de l'item (pas dans "details")
-      itemDiv.appendChild(secondaryBtn);
-
       // Ajouter l'itemDiv à la liste de la catégorie
       categoryList.appendChild(itemDiv);
+    }
   }
-}
-
 }
 
 // Fermer la modale
@@ -104,18 +96,48 @@ function addToCart(category, index) {
   updateTotalPrice(); // Mettre à jour le prix total
 }
 
+// Fonction pour retirer un élément du panier
+function removeFromCart(index) {
+  let item = cart[index];
+  totalPrice -= item.price; // Soustraire le prix de l'article du total
+  cart.splice(index, 1); // Retirer l'article du panier
+  displayCart();
+  updateTotalPrice(); // Mettre à jour le prix total
+}
+
+// Fonction pour créer un élément HTML pour un article du panier
+function createCartItemElement(item, index) {
+  let div = document.createElement("div");
+  div.className = "cart-item";
+
+  let itemName = document.createElement("p");
+  itemName.innerHTML = "<strong>" + item.name + "</strong>";
+  div.appendChild(itemName);
+
+  let itemPrice = document.createElement("p");
+  itemPrice.textContent = "Prix : " + item.price + " €";
+  div.appendChild(itemPrice);
+
+  let removeButton = document.createElement("button");
+  
+  removeButton.textContent = "Retirer";
+  removeButton.addEventListener("click", function() {
+    removeFromCart(index);
+    bouton.classList.add("delet");
+  });
+  div.appendChild(removeButton);
+
+  return div;
+}
+
 // Fonction pour afficher le panier
 function displayCart() {
-  cartItems.innerHTML = "";
+  cartItems.innerHTML = ""; // Réinitialiser l'affichage du panier
 
-  for (let i = 0; i < cart.length; i++) {
-    let item = cart[i];
-    let div = document.createElement("div");
-    div.className = "cart-item";
-    div.innerHTML = "<p><strong>" + item.name + "</strong></p>" +
-      "<p>Prix : " + item.price + " €</p>";
-    cartItems.appendChild(div);
-  }
+  cart.forEach(function(item, index) {
+    let cartItemElement = createCartItemElement(item, index);
+    cartItems.appendChild(cartItemElement);
+  });
 }
 
 // Fonction pour mettre à jour le prix total

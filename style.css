@@ -37,9 +37,10 @@ a {
 }
 
 .boutton-co {
-    margin-left: 10rem;
-    margin-top: 18rem;
+    margin-left: 4rem;
+    margin-top: 17rem;
 }
+
 
 .boutton-in {
     margin-left: 10rem;
@@ -51,4 +52,6 @@ button.btn {
     padding: 1rem;
     border-radius: 0.5rem;
     color: #fff;
+    margin-top: 5%;
+    margin-left: 1%;
 }
