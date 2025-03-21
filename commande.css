@@ -1,10 +1,14 @@
+body{
+  background-color:  #ffffff;
+}
+
 img.logo {
     width: 7%;
 }
 .nav {
-    background-color: #c7c7c7;
-    border-radius: 0.5rem;
+    background-color: #ffffff ;
     display: flex;
+   
 }
 button.connexion {
     height: 10%;
@@ -99,5 +103,21 @@ button#validate {
 
 .delet:hover {
   background-color: red;
+}
+
+
+#carousel {
+  height: 71vh;
+  width: 40vw;
+  margin-left: 0%;
+}
+
+.pub2 {
+  width: 21vw;
+}
+
+img.bag {
+  width: 391px;
+  height: 671px;
 }
 

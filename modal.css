@@ -30,9 +30,10 @@ body {
 .close {
   position: absolute;
   top: 10px;
-  right: 10px;
-  font-size: 30px;
+  right: 10rem;
+  font-size: 70px;
   cursor: pointer;
+  color: white;
 }
 
 /* Conteneur des items dans le modal */
