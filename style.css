@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: #f9f5e7;
+}
 .container {
         background-image: url(image-mc-do/wp1919500.jpg);
         background-size: contain;
@@ -54,4 +58,19 @@ button.btn {
     color: #fff;
     margin-top: 5%;
     margin-left: 1%;
+}
+
+
+img.M {
+    width: 20.7%;
+    height: 37vh;
+    margin-top: 3%;
+}
+
+img.happyMeal {
+    width: 11%;
+    position: absolute;
+    height: auto;
+    margin-top: 8%;
+    left: 5%;
 }
