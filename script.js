@@ -167,3 +167,7 @@ cancelOrder.addEventListener("click", function() {
   cartItems.innerHTML = "";
   updateTotalPrice(); // Mettre à jour le prix total à 0
 });
+
+
+
+
