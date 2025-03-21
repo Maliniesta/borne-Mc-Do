@@ -1,9 +1,6 @@
-// Stocker les données JSON
-let data = {}; 
-// Stocker les éléments du panier
-let cart = []; 
-// Prix total initialisé à 0
-let totalPrice = 0; 
+let data = []; // Stocker les données JSON
+let cart = []; // Stocker les éléments du panier
+let totalPrice = 0; // Prix total initialisé à 0
 
 // Charger les données JSON
 fetch('mcdo.json')
@@ -150,14 +147,13 @@ function updateTotalPrice() {
   totalElement.textContent = "Prix total : " + totalPrice.toFixed(2) + " €";
 }
 
-// Gérer le bouton "Valider commande"
-validateOrder.addEventListener("click", function() {
-  // to fixed(2) formate le nombre apres la virgule a 2
-  alert("Commande validée ! Prix total : " + totalPrice.toFixed(2) + " €");
-  cart = [];
-  totalPrice = 0; // Réinitialiser le prix total
-  cartItems.innerHTML = "";
-  updateTotalPrice(); // Mettre à jour le prix total à 0
+ // Gérer le bouton "Valider commande"
+ validateOrder.addEventListener("click", function() {
+  showOrderSummary(); // Afficher la modale du récapitulatif
+  cart = []; // Réinitialiser le panier après validation
+  totalPrice = 0; // Réinitialiser le total
+  cartItems.innerHTML = ""; // Réinitialiser l'affichage du panier
+  updateTotalPrice(); // Mettre à jour l'affichage du prix total
 });
 
 
@@ -270,4 +266,3 @@ function showOrderSummary() {
   totalPrice = 0; // Réinitialiser le total
   cartItems.innerHTML = "";
   updateTotalPrice(); // Mettre à jour l'affichage du prix total
-
