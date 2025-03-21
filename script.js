@@ -167,3 +167,25 @@ cancelOrder.addEventListener("click", function() {
   cartItems.innerHTML = "";
   updateTotalPrice(); // Mettre à jour le prix total à 0
 });
+
+const slide = [
+  "image-mc-do/carousel/pub1.jpg",
+  "image-mc-do/carousel/pub2.jpg",
+  "image-mc-do/carousel/pub3.jpg",
+  "image-mc-do/carousel/pub4.jpg"
+];
+let number = 0;
+
+function ChangeSlide(sens) {
+  number = number + sens;
+
+  // Corriger les limites d'index
+  if (number >= slide.length) number = 0;
+  if (number < 0) number = slide.length - 1;
+
+  document.getElementById("carousel").src = slide[number]; // Utilise le bon chemin d'image
+}
+
+// Utilisation de setInterval correctement avec une fonction
+setInterval(() => ChangeSlide(1), 2000);
+

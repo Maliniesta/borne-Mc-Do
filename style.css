@@ -60,7 +60,6 @@ button.btn {
     margin-left: 1%;
 }
 
-<<<<<<< HEAD
 
 img.M {
     width: 20.7%;
@@ -75,20 +74,5 @@ img.happyMeal {
     margin-top: 8%;
     left: 5%;
 }
-=======
-.delet {
-    padding: 0.2rem 0.5rem;
-    background-color: #264f36;
-    color: #fff;
-    border-radius: 10px; /* Arrondi */
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Animation fluide */
-}
-
-.delet:hover {
-    background-color: red;
-}
 
 
->>>>>>> 4c303785cb5328336fd5ee8585f83c8f6fd89628

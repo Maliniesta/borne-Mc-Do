@@ -87,3 +87,17 @@ button#validate {
     padding: 0.3rem;
 }
 
+.delet {
+  padding: 0.2rem 0.5rem;
+  background-color: #264f36;
+  color: #fff;
+  border-radius: 10px; /* Arrondi */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Animation fluide */
+}
+
+.delet:hover {
+  background-color: red;
+}
+
