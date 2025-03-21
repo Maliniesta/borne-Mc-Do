@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 let data = []; // Stocker les données JSON
 let cart = []; // Stocker les éléments du panier
 let totalPrice = 0; // Prix total initialisé à 0
+=======
+// Stocker les données JSON
+let data = {}; 
+// Stocker les éléments du panier
+let cart = []; 
+// Prix total initialisé à 0
+let totalPrice = 0; 
+>>>>>>> 77bcd57327b80ddef66f5084dcdf34519c245013
 
 // Charger les données JSON
 fetch('mcdo.json')
@@ -147,6 +156,7 @@ function updateTotalPrice() {
   totalElement.textContent = "Prix total : " + totalPrice.toFixed(2) + " €";
 }
 
+<<<<<<< HEAD
  // Gérer le bouton "Valider commande"
  validateOrder.addEventListener("click", function() {
   showOrderSummary(); // Afficher la modale du récapitulatif
@@ -154,6 +164,16 @@ function updateTotalPrice() {
   totalPrice = 0; // Réinitialiser le total
   cartItems.innerHTML = ""; // Réinitialiser l'affichage du panier
   updateTotalPrice(); // Mettre à jour l'affichage du prix total
+=======
+// Gérer le bouton "Valider commande"
+validateOrder.addEventListener("click", function() {
+  // to fixed(2) formate le nombre apres la virgule a 2
+  alert("Commande validée ! Prix total : " + totalPrice.toFixed(2) + " €");
+  cart = [];
+  totalPrice = 0; // Réinitialiser le prix total
+  cartItems.innerHTML = "";
+  updateTotalPrice(); // Mettre à jour le prix total à 0
+>>>>>>> 77bcd57327b80ddef66f5084dcdf34519c245013
 });
 
 
