@@ -1,12 +1,12 @@
 body{
-  background-color:  #FFC72C;
+  background-color:  white;
 }
 
 img.logo {
     width: 7%;
 }
 .nav {
-    background-color: #264f36 ;
+    background-color: #ffbc0d;
     border-radius: 0.5rem;
     display: flex;
 }

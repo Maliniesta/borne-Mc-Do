@@ -77,7 +77,7 @@ body {
   font-size: 14px;
 }
 
-
+/* Bouton d'ajout à la commande */
 .item button {
   margin-top: 10px;
   padding: 10px;
@@ -90,7 +90,7 @@ body {
 }
 
 .item button:hover {
-  background-color: #e07b00; 
+  background-color: #e07b00; /* Changer de couleur au survol */
 }
 
   
