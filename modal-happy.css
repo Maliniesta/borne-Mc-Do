@@ -1,0 +1,48 @@
+.modal-happy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    display: none; /* Masquée par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    text-align: center;
+  }
+  
+  .modal-happy-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+  }
+  
+  .modal-happy-content button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #chooseToy {
+    background-color: #264f36; 
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  #chooseBook {
+    background-color: #ffbc0d; 
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    color: #000;
+  }
+
+
+  

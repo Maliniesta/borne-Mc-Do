@@ -169,5 +169,64 @@ cancelOrder.addEventListener("click", function() {
 });
 
 
+const slide = [
+  "image-mc-do/carousel/pub1.jpg",
+  "image-mc-do/carousel/pub2.jpg",
+  "image-mc-do/carousel/pub3.jpg",
+  "image-mc-do/carousel/pub4.jpg"
+];
+let number = 0;
 
+function ChangeSlide(sens) {
+  number = number + sens;
+
+  // Corriger les limites d'index
+  if (number >= slide.length) number = 0;
+  if (number < 0) number = slide.length - 1;
+
+  document.getElementById("carousel").src = slide[number]; // Utilise le bon chemin d'image
+}
+
+// Utilisation de setInterval correctement avec une fonction
+setInterval(() => ChangeSlide(1), 2000);
+
+
+function chooseToyOrBook(happyMealIndex) {
+  // Créer et afficher une modale pour le choix
+  const modal = document.createElement("div");
+  modal.className = "modal-happy";
+  modal.style.display = "flex";
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h3>Choisissez une option pour votre Happy Meal :</h3>
+      <button id="chooseToy">Jouet Pokémon</button>
+      <button id="chooseBook">Livre Disney</button>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // Gestion de la sélection (jouet ou livre)
+  const handleSelection = (toyChoice) => {
+    const selectedItem = { ...data.happyMeal[happyMealIndex], toy: toyChoice };
+    cart.push(selectedItem);
+    totalPrice += selectedItem.price;
+    updateTotalPrice();
+    displayCart();
+    modal.remove(); // Fermer la modale
+  };
+
+  document.getElementById("chooseToy").addEventListener("click", () => handleSelection("Jouet Pokémon"));
+  document.getElementById("chooseBook").addEventListener("click", () => handleSelection("Livre Disney"));
+}
+function addToCart(category, index) {
+  if (category === "happyMeal") {
+    chooseToyOrBook(index); // Appelle la fonction pour choisir l'option
+  } else {
+    let item = data[category][index];
+    cart.push(item);
+    totalPrice += item.price; // Ajouter le prix de l'article au total
+    displayCart();
+    updateTotalPrice(); // Mettre à jour le prix total
+  }
+}
 
