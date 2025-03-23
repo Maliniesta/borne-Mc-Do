@@ -266,3 +266,5 @@ function showOrderSummary() {
   totalPrice = 0; // Réinitialiser le total
   cartItems.innerHTML = "";
   updateTotalPrice(); // Mettre à jour l'affichage du prix total
+
+
