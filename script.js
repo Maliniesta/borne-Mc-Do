@@ -267,4 +267,55 @@ function showOrderSummary() {
   cartItems.innerHTML = "";
   updateTotalPrice(); // Mettre à jour l'affichage du prix total
 
+  // Récupérer le bouton "connexion" et créer une modale
+let boutonConnexion = document.querySelector(".connexion"); // Assurez-vous que ce bouton existe
+let modale = document.createElement("div");
+
+// Créer et styliser la modale dynamiquement
+modale.style.display = "none"; // Caché par défaut
+modale.style.position = "fixed";
+modale.style.top = "0";
+modale.style.left = "0";
+modale.style.width = "100%";
+modale.style.height = "100%";
+modale.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+modale.style.justifyContent = "center";
+modale.style.alignItems = "center";
+modale.style.zIndex = "1000";
+
+// Ajouter du contenu à la modale
+let contenu = document.createElement("div");
+contenu.style.backgroundColor = "#fff";
+contenu.style.borderRadius = "8px";
+contenu.style.padding = "20px";
+contenu.style.width = "300px";
+contenu.style.textAlign = "center";
+contenu.innerHTML = `
+  <h3>Connexion</h3>
+  <form>
+    <label>Nom d'utilisateur :</label><br>
+    <input type="text" style="margin-bottom: 10px;" /><br>
+    <label>Mot de passe :</label><br>
+    <input type="password" style="margin-bottom: 10px;" /><br>
+    <button type="submit" style="padding: 10px 20px;">Se connecter</button>
+    <button type="button" id="fermerModale" style="margin-left: 10px; padding: 10px 20px;">Fermer</button>
+  </form>
+`;
+
+// Ajout du contenu à la modale
+modale.appendChild(contenu);
+document.body.appendChild(modale);
+
+// Afficher la modale lorsque le bouton "connexion" est cliqué
+boutonConnexion.addEventListener("click", function() {
+  modale.style.display = "flex";
+});
+
+// Fermer la modale en cliquant sur le bouton "Fermer"
+let boutonFermer = document.querySelector("#fermerModale");
+boutonFermer.addEventListener("click", function() {
+  modale.style.display = "none";
+});
+
+
 
